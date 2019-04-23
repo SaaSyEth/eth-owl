@@ -47,4 +47,6 @@ In our example [swoops](swoops/), we use the [Serverless Framework](https://serv
 - 🦉 `eth-owl` will ping your webhook within a few blocks of a transaction occuring. Expect a ~1 min delay. If customers ask, latency can be reduced
 - 🦉 `eth-owl` is trust minimized. You can run your own node (or [ethql](https://github.com/ConsenSys/ethql), as we do in [swoops](swoops/)) to actually verify the `address` and `hash` in the POST request, and parse the transaction data/events. You should not trust 🦉 `eth-owl` for anything other than its hoots! Especially because POST requests are not signed currently (another feature that can be implemented if customers ask)
 
-[🦉 `eth-owl` is not fazed by what it sees. It watches the Ethereum blockchain, and occasionally hoots](https://gfycat.com/cheerfuloffbeatcardinal.gif)
+![](./eth-owl.gif)
+
+🦉 `eth-owl` is not fazed by what it sees. It watches the Ethereum blockchain, and occasionally hoots
