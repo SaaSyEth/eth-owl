@@ -1,0 +1,26 @@
+service: swoops
+
+provider:
+  memorySize: 512
+  name: aws
+  profile: eth-owl-admin
+  region: us-east-1
+  runtime: nodejs8.10
+  stage: ${opt:stage, 'prod'}
+  timeout: 12
+
+  environment:
+    addresses_table_arn: ${cf:watches-${self:provider.stage}.AddressesArn.Value}
+
+  iamRoleStatements:
+    - Effect: Allow
+      Action: dynamodb:UpdateItem
+      Resource: ${self:provider.environment.addresses_table_arn}
+
+functions:
+  swoops:
+    handler: main.swoops
+    events:
+      - http:
+          path: swoops
+          method: post
