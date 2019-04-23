@@ -1,5 +1,5 @@
 # 🦉 eth-owl
-Watch any Ethereum address with 🦉 `eth-owl` to receive real-time callbaks to your webhook(s) for each incoming/outgoing transaction. A permissionless, pseudo-anonymous Ethereum SaaS utility for developers
+Watch any Ethereum address with 🦉 `eth-owl` to receive real-time callbaks to your webhook(s) for each incoming/outgoing transaction. A permissionless, pseudo-anonymous Ethereum SaaS for developers.
 
 ## Quickstart
 - setup your REST API endpoint that will receive `POST` requests from 🦉 `eth-owl`
@@ -39,6 +39,11 @@ Watch any Ethereum address with 🦉 `eth-owl` to receive real-time callbaks to 
   
 #### 🐶 Dog friendly
 
-In our example [swoops](swoops/), we use the [Serverless Framework](https://serverless.com/) to have a [Lambda](https://aws.amazon.com/lambda/) function that runs anytime our `endpoint` is pinged by `eth-owl`.
+In our example [swoops](swoops/), we use the [Serverless Framework](https://serverless.com/) to have a [Lambda](https://aws.amazon.com/lambda/) function run anytime our `endpoint` is pinged by 🦉 `eth-owl`.
 
-Note: `eth-owl` watches the `EthOwl` smart contract where webhooks are `purchase`d by our users. The `swoops` endpoint watches this smart contract `0x70C92A8A51191378a6ec8ce0493aa7a3f469425C`, and is pinged by `eth-owl` for each incoming/outgoing transaction. The code it runs adds the `_addr` and `_endpoint` to our database, and `eth-owl` now watches all incoming/outgoing transactions for `_addr` and hoots to `endpoint`!
+`eth-owl` watches the `EthOwl` smart contract `0x70C92A8A51191378a6ec8ce0493aa7a3f469425C` where webhooks are `purchase`d by our users. The `swoops` endpoint is pinged by `eth-owl` for each incoming/outgoing transaction to this address (smart contract). The code it runs adds the `_addr` and `_endpoint` `EthOwl` emits with its `Hoot` event to our database. 🦉 `eth-owl` now watches all incoming/outgoing transactions for `_addr` and hoots to `endpoint`! So [swoops](swoops/) is not only an example for you to follow to quickly get started, it dog-foods 🦉 `eth-owl`, and this is the exact code that runs when you `purchase` a webhook via our `EthOwl` smart contract!
+
+#### Notes
+- 🦉 `eth-owl` will ping your webhook within a few blocks of a transaction occuring. Expect a ~1 min delay. If customers ask, latency can be reduced
+- 🦉 `eth-owl` is trust minimized. You can run your own node (or [ethql](https://github.com/ConsenSys/ethql), as we do in [swoops](swoops/)) to actually verify the `address` and `hash` in the POST request, and parse the transaction data/events. You should not trust 🦉 `eth-owl` for anything other than its hoots! Especially because POST requests are not signed currently (another feature that can be implemented if customers ask)
+
