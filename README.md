@@ -1,9 +1,9 @@
 # 🦉 eth-owl
-Watch any Ethereum address with 🦉 `eth-owl` to receive real-time callbaks to your webhook(s) for each incoming/outgoing transaction. A permissionless, pseudo-anonymous Ethereum SaaS for developers.
+Watch any Ethereum address with 🦉 `eth-owl` to receive real-time callbaks to your webhooks (or emails) for each incoming/outgoing transaction. A permissionless, pseudo-anonymous Ethereum SaaS for developers.
 
 ## Quickstart
 - setup your REST API endpoint that will receive `POST` requests from 🦉 `eth-owl`
-- `purchase` your webhook via the `ethOwl` smart contract https://etherscan.io/address/0x70C92A8A51191378a6ec8ce0493aa7a3f469425C#writeContract
+- `purchase` your webhook or email subscription via the `ethOwl` smart contract https://etherscan.io/address/0x70C92A8A51191378a6ec8ce0493aa7a3f469425C#writeContract
 
 ![ScreenShot](./purchase.png)
 
@@ -14,6 +14,10 @@ Watch any Ethereum address with 🦉 `eth-owl` to receive real-time callbaks to 
   _endpoint: 'https://yhk4twhgq8.execute-api.us-east-1.amazonaws.com/prod/swoops' // your REST API endpoint that will be pinged (a POST request) for each incoming/outgoing transaction to `_addr`
 }
 ```
+
+#### emails
+
+Price is the same as webhooks. 0.1 ETH to subscribe your email address to an Ethereum address for 1 year. Email is within ~1 min of the transaction being confirmed, and includes the Ethereum address, transaction hash, and a link to the transaction on Etherscan.
 
 #### Docs for your REST API POST endpoint
 
