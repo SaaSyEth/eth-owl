@@ -1,6 +1,6 @@
 pragma solidity 0.5.7;
 
-import "./Ownable.sol";
+import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
 contract EthOwl is Ownable {
   uint256 public price = 1e17;
